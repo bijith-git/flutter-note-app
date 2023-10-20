@@ -18,6 +18,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           "Add Note",
           style: texttheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
         ),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.check))],
       ),
       body: Padding(
         padding: defualtPadding,
@@ -65,6 +66,21 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          fixedColor: Colors.black,
+          showUnselectedLabels: true,
+          unselectedItemColor: Colors.black,
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon((Icons.edit_note)), label: "edit"),
+            BottomNavigationBarItem(
+                icon: Icon((Icons.format_align_center_outlined)),
+                label: "Format"),
+            BottomNavigationBarItem(
+                icon: Icon((Icons.browse_gallery)), label: "Gallery"),
+            BottomNavigationBarItem(
+                icon: Icon((Icons.checklist_outlined)), label: "Check list"),
+          ]),
     );
   }
 }

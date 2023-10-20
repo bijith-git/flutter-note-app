@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noteapp_flutter/constants/constants.dart';
+import 'package:noteapp_flutter/screens/addnote/add_note.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -92,45 +93,54 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (_, i) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: const Color(0xffb3b2be))),
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Note Title",
-                                  style: texttheme.bodyMedium!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: .5),
-                                ),
-                                Text(
-                                  "Yesterday",
-                                  style: texttheme.bodySmall!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: .5),
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                              style: texttheme.bodyMedium!
-                                  .copyWith(letterSpacing: .5),
-                            ),
-                          ]),
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddNoteScreen()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0xffb3b2be))),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Note Title",
+                                    style: texttheme.bodyMedium!.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: .5),
+                                  ),
+                                  Text(
+                                    "Yesterday",
+                                    style: texttheme.bodySmall!.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: .5),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: texttheme.bodyMedium!
+                                    .copyWith(letterSpacing: .5),
+                              ),
+                            ]),
+                      ),
                     );
                   }),
             )
@@ -140,6 +150,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton:
           FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
       bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: true,
           fixedColor: Colors.black,
           unselectedItemColor: Colors.black,
           items: [
